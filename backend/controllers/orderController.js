@@ -64,7 +64,35 @@ const getUserOrders = async (req, res) => {
     }
 };
 
+const updateOrderStatus = async (req, res) => {
+    try {
+        const { status } = req.body;
+
+        const order = await Order.findByIdAndUpdate(
+            req.params.orderId,
+            { status },
+            { new: true, runValidators: true }
+        ).populate("items.food");
+
+        if (!order) {
+            return res.status(404).json({
+                message: "Order not found"
+            });
+        }
+
+        res.status(200).json({
+            message: "Order status updated",
+            order
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: "Failed to update order status"
+        });
+    }
+};
+
 module.exports = {
     placeOrder,
-    getUserOrders
+    getUserOrders,
+    updateOrderStatus
 };
