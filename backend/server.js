@@ -11,11 +11,13 @@ app.use(cors());
 const userRoutes = require("./routes/userRoutes");
 const restaurantRoutes = require("./routes/restaurantRoutes");
 const foodRoutes = require("./routes/foodRoutes");
+const cartRoutes = require("./routes/cartRoutes");
 
 app.use(express.json());
 app.use("/api/users", userRoutes);
 app.use("/api/restaurants", restaurantRoutes);
 app.use("/api/foods", foodRoutes);
+app.use("/api/cart", cartRoutes);
 
 app.get("/", (req, res) => {
     res.send("Food Ordering Backend Running");
