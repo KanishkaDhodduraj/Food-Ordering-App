@@ -1,1 +1,41 @@
-<p>register works!</p>
+<div class="auth-container">
+    <div class="auth-card">
+        <h2>Create Account</h2>
+        <p>Join Foodie and start ordering delicious food.</p>
+
+        <form (ngSubmit)="register()">
+            <input
+                type="text"
+                placeholder="Name"
+                [(ngModel)]="name"
+                name="name"
+                required
+            >
+
+            <input
+                type="email"
+                placeholder="Email"
+                [(ngModel)]="email"
+                name="email"
+                required
+            >
+
+            <input
+                type="password"
+                placeholder="Password"
+                [(ngModel)]="password"
+                name="password"
+                required
+            >
+
+            <button type="submit">Register</button>
+        </form>
+
+        <p class="message">{{ message }}</p>
+
+        <p>
+            Already have an account?
+            <a routerLink="/login">Login</a>
+        </p>
+    </div>
+</div>
